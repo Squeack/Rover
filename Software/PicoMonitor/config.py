@@ -1,0 +1,5 @@
+wifi_ssid = 'RoverNet'
+wifi_password = 'Opportunity'
+mqtt_server = b'192.168.8.8'
+mqtt_username = b'monitor'
+mqtt_password = b'Opportunity'
