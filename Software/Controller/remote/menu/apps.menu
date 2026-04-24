@@ -1,0 +1,4 @@
+Joystick test:extcmd:python3 ~/remote/test_functions/joystick_monitor.py
+Joystick centre finder:extcmd:python3 ~/remote/test_functions/centre_position.py
+Mars Rover Control:extcmd:python3 ~/remote/control/rovercontrol.py
+return:backmenu:

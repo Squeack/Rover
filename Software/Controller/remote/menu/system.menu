@@ -1,0 +1,4 @@
+ifconfig:cmd:/usr/sbin/ifconfig
+reboot:cmd:sudo /usr/sbin/shutdown -r now
+shutdown:cmd:sudo /usr/sbin/shutdown -h now
+return:backmenu:
