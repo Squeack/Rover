@@ -30,14 +30,19 @@ class MoveListener(Node):
     self.subscription # prevent unused variable warning
 
   def listener_callback(self, msg):
-    global mqttc
-    global rover
+    global targetx, targety, targetr    
     linx = msg.linear.x
     liny = msg.linear.y
     linz = msg.linear.z
     angx = msg.angular.x
     angy = msg.angular.y
     angz = msg.angular.z
+    # Null zone
+    movemag2 = linx*linx + liny*liny + angz*angz
+    if movemag2 < 0.0001: # 0.01 ^ 2
+      linx = 0
+      liny = 0
+      angz = 0
     if DEBUG: self.get_logger().info(f"Move message: Linear=({linx}, {liny}, {linz}), Angular=({angx}, {angy}, {angz})")
     if mqttc is not None:
       rover.set_control(liny, linx, -angz)
@@ -124,7 +129,7 @@ def on_disconnect(client, userdata, reason_code):
   else:
     client.close()
     print("MQTT disconnected cleanly")
-    
+
 
 def setupMQTT():
   print("Setting up MQTT")
